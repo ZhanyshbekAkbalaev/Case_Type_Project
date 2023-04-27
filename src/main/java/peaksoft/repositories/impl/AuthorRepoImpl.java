@@ -82,6 +82,8 @@ public class AuthorRepoImpl implements AuthorRepository {
         Author author = entityManager.createQuery("select a from Author a where a.id = :authorId", Author.class).setParameter("authorId", authorId).getSingleResult();
         publisher.addAuthor(author);
         author.addPublisher(publisher);
+        entityManager.merge(publisher);
+        entityManager.merge(author);
         entityManager.getTransaction().commit();
         entityManager.close();
         return "Successfully assign.";

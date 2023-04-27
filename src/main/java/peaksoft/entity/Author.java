@@ -26,10 +26,16 @@ public class Author {
     private String email;
     private LocalDate date_of_birth;
     private String country;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
-    @ManyToMany(cascade = {DETACH,MERGE, PERSIST,REFRESH}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {DETACH, MERGE, PERSIST, REFRESH}, fetch = FetchType.EAGER)
     private List<Publisher> publishers;
-    @OneToMany(cascade = {ALL},mappedBy = "author")
+    @OneToMany(cascade = {ALL,
+            PERSIST,
+            MERGE,
+            REMOVE,
+            REFRESH,
+            DETACH}, mappedBy = "author")
     private List<Book> books;
 
     public Author(String firstName, String lastName, String email, LocalDate date_of_birth, String country, Gender gender) {

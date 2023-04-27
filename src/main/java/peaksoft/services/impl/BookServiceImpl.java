@@ -8,8 +8,7 @@ import peaksoft.services.BookService;
 public class BookServiceImpl implements BookService {
     private BookRepository bookRepository = new BookRepoImpl();
     @Override
-    public Book saveBook(Book book) {
-        return bookRepository.saveBook(book);
+    public Book saveBook(Long authorId,Long publisherId,Book book) {return bookRepository.saveBook(authorId,publisherId,book);
     }
 
     @Override

@@ -18,12 +18,22 @@ public class Reader {
     private String name;
     private int age;
     private String email;
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Book book;
 
     public Reader(String name, int age, String email) {
         this.name = name;
         this.age = age;
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Reader{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

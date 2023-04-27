@@ -24,6 +24,7 @@ public class Book {
     private String country;
     private LocalDate published_year;
     private int price;
+    @Enumerated(EnumType.STRING)
     private Genre genre;
     @ManyToOne(cascade = {REFRESH, MERGE, PERSIST, DETACH})
     private Author author;
